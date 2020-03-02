@@ -1,6 +1,7 @@
 #include "arduinoFFT.h"
+
   
-#define SAMPLES 512               //Must be a power of 2
+#define SAMPLES 1024               //Must be a power of 2
 #define SAMPLING_FREQUENCY 50000  //Hz
 #define REFRESH_RATE 10           //Hz
 #define ARDUINO_IDE_PLOTTER_SIZE 500
@@ -54,13 +55,19 @@ void loop() {
   
  
   /*PRINT RESULTS*/
+
+  Serial.println("*");
   for(int i=2; i<(SAMPLES/2); i++){
-    Serial.println(vReal[i], 1);
+    Serial.print(vReal[i], 1);
+    Serial.print(',');
   }
+  Serial.print('\n');
+
+  /*
   for(int i=0; i<(ARDUINO_IDE_PLOTTER_SIZE - (SAMPLES/2)); i++){
     Serial.println(0);
   }
- /*
+ 
   while(micros() < (useconds_refresh + refresh_period_us)){
     //wait...
   }
