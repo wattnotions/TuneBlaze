@@ -49,7 +49,7 @@ var framesSinceLastBeat = 0; // once this equals beatHoldFrames, beatCutoff star
 
 
 function preload() {
-  soundFile = loadSound('../../music/YACHT_-_06_-_Summer_Song_Instrumental.mp3');
+  soundFile = loadSound('http://robojam.ie/p5/1.mp3');
 }
 
 function setup() {

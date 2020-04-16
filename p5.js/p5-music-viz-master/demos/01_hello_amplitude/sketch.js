@@ -9,7 +9,7 @@ var mapMax = 1.0;
 
 function preload() {
   // load the sound, but don't play it yet
-  soundFile = loadSound('../../music/Broke_For_Free_-_01_-_As_Colorful_As_Ever.mp3')
+  soundFile = loadSound('http://robojam.ie/p5/1.mp3')
 }
 
 function setup() {

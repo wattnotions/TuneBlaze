@@ -13,7 +13,7 @@ var soundFile;
 var peakCount = 500;
 
 function preload() {
-  soundFile = loadSound('../../music/sounds/Snare-707.mp3');
+  soundFile = loadSound('http://robojam.ie/p5/1.mp3');
 }
 
 function setup() {
