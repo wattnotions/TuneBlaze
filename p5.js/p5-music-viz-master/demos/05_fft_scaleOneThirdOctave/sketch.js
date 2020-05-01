@@ -4,17 +4,23 @@
  *  using the splitOctaves method.
  */
 
-var source, fft;
+var source, fft, soundFile;
+
+function preload() {
+	soundFile = loadSound('http://robojam.ie/p5/2.mp3')
+}
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   noFill();
+  
+  
 
   source = new p5.AudioIn();
   source.start();
 
   fft = new p5.FFT(0.8, 1024);
-  fft.setInput(source);
+  fft.setInput(soundFile);
 }
 
 function draw() {
@@ -133,4 +139,41 @@ function smoothPoint(spectrum, index, numberOfNeighbors) {
   val = val/smoothedPoints;
 
   return val;
+}
+
+function keyPressed() {
+  if (key == 'T') {
+    toggleInput();
+  }
+  if (key == 'L') {
+    console.log('l');
+    toggleScale();
+  }
+}
+
+
+var inputMode = 0; //start with soundfile as source
+function toggleInput(mode) {
+  if (typeof(mode) === 'number') {
+    inputMode = mode;
+  } else {
+    inputMode += 1;
+    inputMode = inputMode % 2;
+  }
+  switch (inputMode) {
+    case 0: // soundFile mode
+      soundFile.play();
+      osc.stop();
+      mic.stop();
+      fft.setInput(soundFile);
+      currentSource = 'soundFile';
+      break;
+    case 1: // mic mode
+      mic.start();
+      soundFile.pause();
+      fft.setInput(mic);
+      currentSource = 'mic';
+      break;
+    
+  }
 }
